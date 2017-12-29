@@ -15,7 +15,7 @@ function setup() {
 	
 	for(i = 0; i<3;i++){
 		for(j = 0; j<3;j++){
-			boxes.push(new xobox(100+110*j,100+110*i,3*i+j));
+			boxes.push(new xobox(50+210*j,50+210*i,3*i+j));
 		}
 	}
 	

@@ -3,6 +3,7 @@ function xobox(posx,posy,index){
 	this.posy = posy;
 	this.index = index;
 	this.value = 2;
+	this.parent = true;
 	
 	
 	this.valueSet = function(value){
@@ -18,7 +19,15 @@ function xobox(posx,posy,index){
 		
 	this.show = function(){
 		push();
-			translate(posx+50,posy+50);
+			translate(posx,posy);
+			if (this.value == 2 && this.parent){
+				fill(150,180,180);
+				rect(70,20,5,160);
+				rect(125,20,5,160);
+				rect(20,70,160,5);
+				rect(20,125,160,5);
+				}
+			translate(100,100);
 			if (this.value == 0){
 				rotate(QUARTER_PI);
 				rect(-5,-40,10,80);
@@ -37,12 +46,15 @@ function xobox(posx,posy,index){
 	this.hover = function(){
 		push();
 			fill(150,180,180);
-			if(mouseX>this.posx&&mouseX<this.posx+100&&mouseY>this.posy&&mouseY<this.posy+100&&this.value==2)
-				rect(posx,posy,100,100);
+			if(mouseX>this.posx&&mouseX<this.posx+200&&mouseY>this.posy&&mouseY<this.posy+200&&this.value==2){
+				//rect(posx,posy,200,200);
+				translate(posx,posy);
+				}
 		pop();
+		
 	}
 	this.clicked = function(){
-		if(mouseX>this.posx&&mouseX<this.posx+100&&mouseY>this.posy&&mouseY<this.posy+100&&this.value==2){
+		if(mouseX>this.posx&&mouseX<this.posx+200&&mouseY>this.posy&&mouseY<this.posy+200&&this.value==2){
 			this.value = turn;
 			turn = (turn+1)%2;
 			clicked = true;
