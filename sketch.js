@@ -6,6 +6,7 @@ var drawn = 0;
 var socket;
 var boxes =[];
 var playable = -1;
+var hovered = false;
 function preload(){
 	//fontVector = loadFont("./libraries/Vectorb.ttf");
 }
@@ -68,10 +69,12 @@ function draw() {
 	
 	
 	background(255);
+	//ellipse(
 	rect(250,50,10,620);
 	rect(460,50,10,620);
 	rect(50,250,620,10);
 	rect(50,460,620,10);	
+	hovered = false;
 	if (playable + 1){
 		boxes[playable].hover();
 		boxes[playable].outlined();
@@ -93,19 +96,20 @@ function draw() {
 		textSize(50);
 		text('draw',190,60);
 	}
-	push();
-		translate(mouseX,mouseY);
-		if (!turn){
-			rotate(QUARTER_PI);
-			rect(-3,-20,6,40);
-			rect(-20,-3,40,6);
-			}
-		else{
-			noFill();
-			stroke(0);
-			strokeWeight(8);
-			ellipse(0,0,30)
-			}
-	pop();
-	
+	if(!hovered){
+		push();
+			translate(mouseX,mouseY);
+			if (!turn){
+				rotate(QUARTER_PI);
+				rect(-3,-20,6,40);
+				rect(-20,-3,40,6);
+				}
+			else{
+				noFill();
+				stroke(0);
+				strokeWeight(8);
+				ellipse(0,0,30)
+				}
+		pop();
+	}
 }

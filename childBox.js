@@ -37,8 +37,25 @@ function childBox(posx,posy,index){
 			
 	
 	this.hover = function(){
-		if(mouseX>this.posx&&mouseX<this.posx+50&&mouseY>this.posy&&mouseY<this.posy+50&&this.value==2)
+		if(mouseX>this.posx&&mouseX<this.posx+55&&mouseY>this.posy&&mouseY<this.posy+55&&this.value==2){
 			boxes[index].hovered();
+			push();
+				translate(posx+25,posy+25);
+				fill(0);
+				if (!turn){
+					rotate(QUARTER_PI);
+					rect(-3,-20,6,40);
+					rect(-20,-3,40,6);
+					}
+				else{
+					noFill();
+					stroke(0);
+					strokeWeight(8);
+					ellipse(0,0,30)
+					}
+			pop();
+			hovered = true;
+		}
 	}
 	this.clicked = function(click){
 		if(mouseX>this.posx&&mouseX<this.posx+50&&mouseY>this.posy&&mouseY<this.posy+50&&this.value==2){
