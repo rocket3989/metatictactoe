@@ -10,6 +10,7 @@ function preload(){
 	//fontVector = loadFont("./libraries/Vectorb.ttf");
 }
 function setup() {
+	noCursor();
 	frameRate(60);
 	createCanvas(windowWidth, windowHeight);
 	noStroke();
@@ -60,6 +61,12 @@ function mouseClicked(){
 	
 function draw() {
 	//console.log(drawn);
+	
+	
+	
+	
+	
+	
 	background(255);
 	rect(250,50,10,620);
 	rect(460,50,10,620);
@@ -86,5 +93,19 @@ function draw() {
 		textSize(50);
 		text('draw',190,60);
 	}
+	push();
+		translate(mouseX,mouseY);
+		if (!turn){
+			rotate(QUARTER_PI);
+			rect(-3,-20,6,40);
+			rect(-20,-3,40,6);
+			}
+		else{
+			noFill();
+			stroke(0);
+			strokeWeight(8);
+			ellipse(0,0,30)
+			}
+	pop();
 	
 }
