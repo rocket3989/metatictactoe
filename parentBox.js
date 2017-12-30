@@ -11,7 +11,7 @@ function parentBox(posx,posy,index){
 	}
 	this.reset = function(){
 		for(j = 0;j<9;j++)
-			this.boxchildren.value = 2;
+			this.boxchildren[j].value = 2;
 		this.value = 2;
 	}
 	this.winTest = function(){
