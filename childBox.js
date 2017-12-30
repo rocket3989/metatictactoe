@@ -37,7 +37,7 @@ function childBox(posx,posy,index){
 			
 	
 	this.hover = function(){
-		if(mouseX>this.posx&&mouseX<this.posx+55&&mouseY>this.posy&&mouseY<this.posy+55&&this.value==2){
+		if(mouseX>this.posx&&mouseX<this.posx+56&&mouseY>this.posy&&mouseY<this.posy+56&&this.value==2){
 			boxes[index].hovered();
 			push();
 				translate(posx+25,posy+25);
