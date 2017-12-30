@@ -97,6 +97,8 @@ function parentBox(posx,posy,index){
 				if (this.played == 9)
 					this.value = 3;
 				update = true;
+				if (boxes[playable].value != 2)
+					playable = -1;
 			}
 		
 		}

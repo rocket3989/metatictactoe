@@ -45,8 +45,6 @@ function childBox(posx,posy,index){
 			this.value = turn;
 			turn = (turn+1)%2;
 			playable = this.index;
-			if (boxes[playable].value != 2)
-				playable = -1;
 			return true;
 		}
 		return false;
