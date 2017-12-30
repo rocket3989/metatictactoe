@@ -40,6 +40,7 @@ function mouseClicked(){
 		win = 2;
 		turn = 0;
 		drawn = 0;
+		playable = -1;
 	}
 	if (update){//test for win
 		for (i = 0;i<3;i++){
