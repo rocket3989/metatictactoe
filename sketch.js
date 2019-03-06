@@ -25,16 +25,12 @@ function mouseClicked(){
     if (playable + 1)
         update = update || boxes[playable].clicked();
 
-    else{
-        boxes.forEach(box => {
-            box.clicked();
-        });
-    }
+    else
+        boxes.forEach(box => {box.clicked()});
+
     if(win != 2){
         
-        boxes.forEach(box => {
-            box.reset();
-        });
+        boxes.forEach(box => {box.reset()});
             
         win = 2;
         turn = 0;
@@ -46,7 +42,7 @@ function mouseClicked(){
 
         boxes.forEach(box => {
             if(box.value == 2)
-                win = 2;
+                win = 2;    //not a draw
         });
 
         for (i = 0; i < 3; i++){
@@ -71,7 +67,7 @@ function draw() {
 
     push();
         translate(360,360);
-        if (win == 0 || win == 3){
+        if (win == 0 || win == 3){  //if there is a winner
             fill(0);
             rotate(QUARTER_PI);
             rect(-30,-320,67,640);
@@ -99,17 +95,10 @@ function draw() {
         hovered = boxes[playable].hover();
         boxes[playable].outlined();
     }
-    else{
-        boxes.forEach(box => {
-            hovered = hovered || box.hover();
-        });
-    }
-            
+    else
+        boxes.forEach(box => {hovered = hovered || box.hover()});
 
-    boxes.forEach(box => {
-        box.show();
-    })
-        
+    boxes.forEach(box => {box.show()})
     
     if(!hovered){
         push();

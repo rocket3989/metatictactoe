@@ -45,7 +45,7 @@ function parentBox(posx,posy,index){
                 rect(20,125,160,5);
             }
                 
-            translate(posx + 100, posy + 100);    //move to the center of the box
+            translate(posx + 100, posy + 100);          //move to the center of the box
 
             if (this.value == 0 || this.value == 3){    //decided X or tie
                 rotate(QUARTER_PI);
@@ -62,7 +62,7 @@ function parentBox(posx,posy,index){
         pop();
     }
         
-    this.hovered = function(){                        //if the box is hovered, draw a box behind it
+    this.hovered = function(){                          //if the box is hovered, draw a box behind it
         push();
             fill(197, 197, 251);
             rect(posx, posy, 200, 200);
@@ -80,21 +80,17 @@ function parentBox(posx,posy,index){
     
     this.hover = function(){
         let found  = false;                             //v If this box is being hovered
-        if(mouseX > this.posx && mouseX < this.posx + 200 && mouseY > this.posy && mouseY < this.posy + 200 && this.value == 2){
-            this.boxchildren.forEach(child => {         //find which child is being hovered
-                found  = found || child.hover();
-            });
-        }
+        if(mouseX > this.posx && mouseX < this.posx + 200 && mouseY > this.posy && mouseY < this.posy + 200 && this.value == 2)
+            this.boxchildren.forEach(child => {found  = found || child.hover()});       //find which child is being hovered
+        
         return found;                                   //return if a child was found
     }
 
     this.clicked = function(){
         var click = false;
         if(mouseX > this.posx && mouseX < this.posx + 200 && mouseY > this.posy && mouseY < this.posy + 200 && this.value == 2){
-                                                                //if box clicked in
-            this.boxchildren.forEach(child => {
-                click = click || child.clicked();               //find the clicked child
-            });    
+
+            this.boxchildren.forEach(child => {click = click || child.clicked()});      //if box clicked in, find the clicked child
 
             if (click){                                         //if child found, evaluate for win
                 
@@ -106,14 +102,14 @@ function parentBox(posx,posy,index){
                 });
 
                 for (x = 0; x < 3; x++){
-                    if (abs(this.boxchildren[3*x].winTest() + this.boxchildren[3*x+1].winTest() + this.boxchildren[3*x+2].winTest()) > 2) //test for 3 in a row
-                        this.value = this.boxchildren[3*x].value;
-                    if (abs(this.boxchildren[x].winTest() + this.boxchildren[x+3].winTest() + this.boxchildren[x+6].winTest()) > 2)     //other axis
-                        this.value = this.boxchildren[x].value;
+                    if (abs(this.boxchildren[3*x].winTest() + this.boxchildren[3*x+1].winTest() + this.boxchildren[3*x+2].winTest()) > 2)
+                        this.value = this.boxchildren[3*x].value;           //test for 3 in a row
+                    if (abs(this.boxchildren[x].winTest() + this.boxchildren[x+3].winTest() + this.boxchildren[x+6].winTest()) > 2)
+                        this.value = this.boxchildren[x].value;              //other axis
                 }
 
-                if(abs(this.boxchildren[0].winTest() + this.boxchildren[4].winTest() + this.boxchildren[8].winTest()) > 2)              //check diagonals
-                    this.value = this.boxchildren[0].value;
+                if(abs(this.boxchildren[0].winTest() + this.boxchildren[4].winTest() + this.boxchildren[8].winTest()) > 2)
+                    this.value = this.boxchildren[0].value;                 //check diagonals
                 if(abs(this.boxchildren[2].winTest() + this.boxchildren[4].winTest() + this.boxchildren[6].winTest()) > 2)
                     this.value = this.boxchildren[2].value;
                 
