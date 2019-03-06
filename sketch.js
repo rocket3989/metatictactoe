@@ -26,7 +26,7 @@ function mouseClicked(){
         update = update || boxes[playable].clicked();
 
     else
-        boxes.forEach(box => {box.clicked()});
+        boxes.forEach(box => {update = update || box.clicked()});
 
     if(win != 2){
         

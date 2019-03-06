@@ -94,11 +94,11 @@ function parentBox(posx,posy,index){
 
             if (click){                                         //if child found, evaluate for win
                 
-                value = 3;                                      //assume the box is filled
+                this.value = 3;                                      //assume the box is filled
 
                 this.boxchildren.forEach(child => {
                     if(child.value == 2)
-                        value = 2;                              //if the box isnt filled
+                        this.value = 2;                              //if the box isnt filled
                 });
 
                 for (x = 0; x < 3; x++){
